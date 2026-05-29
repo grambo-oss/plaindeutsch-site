@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlainDeutsch — German documents in plain English</title>
+  <meta name="description" content="AI-powered tools that explain German bureaucracy, contracts, and documents in plain language. No jargon. No lawyer needed." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1B2A4A;
+      --teal:   #1D9E75;
+      --teal-l: #E8F7F2;
+      --teal-m: #9FE1CB;
+      --off:    #F9FAFB;
+      --white:  #FFFFFF;
+      --gray:   #6B7280;
+      --border: #E5E7EB;
+      --text:   #1B2A4A;
+      --radius: 12px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--navy);
+    }
+    .logo span { color: var(--teal); }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 14px;
+      color: var(--gray);
+      list-style: none;
+    }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-cta {
+      background: var(--teal);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 18px;
+      border-radius: 8px;
+      transition: opacity .15s;
+    }
+    .nav-cta:hover { opacity: .88; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(160deg, #F0FAF6 0%, #FFFFFF 55%);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 24px 72px;
+      text-align: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: var(--teal-l);
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      color: var(--navy);
+      max-width: 720px;
+      margin: 0 auto 10px;
+    }
+    .hero h1 span { color: var(--teal); }
+    .hero-de {
+      font-size: 17px;
+      color: var(--gray);
+      font-style: italic;
+      margin-bottom: 22px;
+      letter-spacing: .01em;
+    }
+    .hero p {
+      font-size: 18px;
+      color: var(--gray);
+      max-width: 560px;
+      margin: 0 auto 36px;
+      line-height: 1.65;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--teal);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 10px;
+      transition: opacity .15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary:hover { opacity: .88; }
+    .btn-secondary {
+      background: transparent;
+      color: var(--navy);
+      font-size: 16px;
+      font-weight: 500;
+      padding: 14px 28px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      transition: border-color .15s;
+    }
+    .btn-secondary:hover { border-color: var(--teal-m); }
+    .hero-note {
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--gray);
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 72px 24px; }
+    .section-inner { max-width: 1080px; margin: 0 auto; }
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -.5px;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .section-sub {
+      font-size: 17px;
+      color: var(--gray);
+      max-width: 560px;
+      line-height: 1.65;
+      margin-bottom: 48px;
+    }
+
+    /* ── STAT BAR ── */
+    .stats {
+      background: var(--navy);
+      padding: 32px 24px;
+    }
+    .stats-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--teal-m);
+      letter-spacing: -1px;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-label { font-size: 13px; color: rgba(255,255,255,.6); }
+
+    /* ── TOOLS GRID ── */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .tool-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: border-color .2s, box-shadow .2s;
+      position: relative;
+    }
+    .tool-card:hover { border-color: var(--teal-m); box-shadow: 0 4px 20px rgba(29,158,117,.08); }
+    .tool-card.active { border-color: var(--teal); }
+    .tool-card.active::before {
+      content: 'Live now';
+      position: absolute;
+      top: -1px; right: 20px;
+      background: var(--teal);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 0 0 6px 6px;
+    }
+    .tool-card.soon { opacity: .7; }
+    .tool-icon {
+      width: 40px; height: 40px;
+      background: var(--teal-l);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .tool-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.3;
+    }
+    .tool-card p {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.55;
+      flex: 1;
+    }
+    .tool-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .tool-price {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+    .tool-btn {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: 8px;
+      background: var(--teal);
+      color: #fff;
+      transition: opacity .15s;
+      white-space: nowrap;
+    }
+    .tool-btn:hover { opacity: .88; }
+    .tool-btn-example {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 7px 12px;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--teal);
+      border: 1.5px solid var(--teal-m);
+      transition: background .15s, border-color .15s;
+      white-space: nowrap;
+    }
+    .tool-btn-example:hover { background: var(--teal-l); border-color: var(--teal); }
+    .tool-btn-example.disabled {
+      color: var(--gray);
+      border-color: var(--border);
+      cursor: default;
+      pointer-events: none;
+    }
+    .tool-footer-actions { display: flex; gap: 6px; align-items: center; flex-shrink: 0; }
+    .tool-soon-badge {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--gray);
+      background: var(--off);
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      border-radius: 8px;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how-bg { background: var(--off); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+    }
+    .step { display: flex; flex-direction: column; gap: 12px; }
+    .step-num {
+      width: 36px; height: 36px;
+      background: var(--teal);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .step h3 { font-size: 16px; font-weight: 600; color: var(--navy); }
+    .step p { font-size: 14px; color: var(--gray); line-height: 1.6; }
+
+    /* ── WHY ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .why-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .why-card .icon {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+    .why-card h3 { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+    .why-card p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      border-radius: 10px;
+      padding: 20px 24px;
+      font-size: 13px;
+      color: #92400E;
+      line-height: 1.65;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .disclaimer strong { font-weight: 600; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,.6);
+      padding: 40px 24px;
+      font-size: 13px;
+    }
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-brand .logo { color: #fff; font-size: 18px; }
+    .footer-brand p { margin-top: 6px; font-size: 12px; color: rgba(255,255,255,.45); }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,.55); transition: color .15s; }
+    .footer-links a:hover { color: #fff; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero { padding: 56px 20px 48px; }
+      section { padding: 52px 20px; }
+      .stats-inner { gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">Plain<span>Deutsch</span></span>
+    <ul class="nav-links">
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#why">Why PlainDeutsch</a></li>
+    </ul>
+    <a href="#tools" class="nav-cta">Try it now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">AI-powered · No jargon · No lawyer needed</div>
+  <h1>German documents.<br><span>In plain English.</span></h1>
+  <p class="hero-de">Deutsche Dokumente. Klipp und klar erklärt.</p>
+  <p>Confusing German contracts, utility bills, and bureaucracy — explained in plain language so you know exactly where you stand.</p>
+  <div class="hero-actions">
+    <a href="#nebenkosten" class="btn-primary">Try the Nebenkostenabrechnung explainer →</a>
+    <a href="#tools" class="btn-secondary">See all tools</a>
+  </div>
+  <p class="hero-note">Launch price: €5 per document &nbsp;·&nbsp; No account needed</p>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">6M+</div>
+      <div class="stat-label">English speakers living in Germany</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">~€150</div>
+      <div class="stat-label">Average Nebenkosten dispute value</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">30 sec</div>
+      <div class="stat-label">To understand your document</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">9</div>
+      <div class="stat-label">German document tools, coming soon</div>
+    </div>
+  </div>
+</div>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="section-inner">
+    <div class="section-label">All tools</div>
+    <h2 class="section-title">Everything German bureaucracy throws at you.</h2>
+    <p class="section-sub">One tool live now. Eight more in the pipeline — covering the documents that confuse expats most.</p>
+
+    <div class="tools-grid">
+
+      <!-- LIVE -->
+      <div class="tool-card active" id="nebenkosten">
+        <div class="tool-icon">🧾</div>
+        <h3>Nebenkostenabrechnung explainer</h3>
+        <p>Upload your annual utility statement and get a plain-English breakdown of every line item — heating, water, maintenance — and whether the charges look right.</p>
+        <div class="tool-footer">
+          <span class="tool-price">€5 per document</span>
+          <div class="tool-footer-actions">
+            <a href="example-nebenkosten.html" class="tool-btn-example">Example</a>
+            <a href="https://plaindeutsch.gumroad.com/l/wpkva" class="tool-btn">Try it →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMING SOON -->
+      <div class="tool-card soon">
+        <div class="tool-icon">🏠</div>
+        <h3>Lease agreement explainer <span style="font-size:11px;color:var(--gray);font-weight:400;">(Mietvertrag)</span></h3>
+        <p>Rent increases, deposit rules, notice periods, Schönheitsreparaturen — explained before you sign.</p>
+        <div class="tool-footer">
+          <span class="tool-price">Coming soon</span>
+          <div class="tool-footer-actions">
+            <span class="tool-btn-example disabled">Example</span>
+            <span class="tool-soon-badge">Demnächst</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-card soon">
+        <div class="tool-icon">💼</div>
+        <h3>Employment contract analyser <span style="font-size:11px;color:var(--gray);font-weight:400;">(Arbeitsvertrag)</span></h3>
+        <p>Plain-language explanation of your key clauses, probation terms, non-compete rules, and worker rights before day one.</p>
+        <div class="tool-footer">
+          <span class="tool-price">Coming soon</span>
+          <div class="tool-footer-actions">
+            <span class="tool-btn-example disabled">Example</span>
+            <span class="tool-soon-badge">Demnächst</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-card soon">
+        <div class="tool-icon">✉️</div>
+        <h3>Bewerbungsschreiben generator</h3>
+        <p>Upload a job posting and get a tailored German cover letter — correct tone, format, and Anrede that English AI tools consistently get wrong.</p>
+        <div class="tool-footer">
+          <span class="tool-price">Coming soon</span>
+          <div class="tool-footer-actions">
+            <span class="tool-btn-example disabled">Example</span>
+            <span class="tool-soon-badge">Demnächst</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-card soon">
+        <div class="tool-icon">🧮</div>
+        <h3>Expat German tax FAQ chatbot</h3>
+        <p>Your questions about Steuererklärung, Steuer-ID, Finanzamt, and deductions — answered in plain English.</p>
+        <div class="tool-footer">
+          <span class="tool-price">Coming soon</span>
+          <div class="tool-footer-actions">
+            <span class="tool-btn-example disabled">Example</span>
+            <span class="tool-soon-badge">Demnächst</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-card soon">
+        <div class="tool-icon">🗂️</div>
+        <h3>Bureaucracy navigator</h3>
+        <p>Step-by-step guides for Anmeldung, Steuer-ID, visa extensions, Rundfunkbeitrag, and opening a bank account.</p>
+        <div class="tool-footer">
+          <span class="tool-price">Coming soon</span>
+          <div class="tool-footer-actions">
+            <span class="tool-btn-example disabled">Example</span>
+            <span class="tool-soon-badge">Demnächst</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-card soon">
+        <div class="tool-icon">🏥</div>
+        <h3>GKV vs PKV health insurance guide</h3>
+        <p>Unbiased comparison of public and private German health insurance based on your income, age, and situation. No broker, no commission.</p>
+        <div class="tool-footer">
+          <span class="tool-price">Coming soon</span>
+          <div class="tool-footer-actions">
+            <span class="tool-btn-example disabled">Example</span>
+            <span class="tool-soon-badge">Demnächst</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-card soon">
+        <div class="tool-icon">🏦</div>
+        <h3>Riester / Rürup pension explainer</h3>
+        <p>What you actually own, what the tax benefit really is, and how to read your annual pension statement.</p>
+        <div class="tool-footer">
+          <span class="tool-price">Coming soon</span>
+          <div class="tool-footer-actions">
+            <span class="tool-btn-example disabled">Example</span>
+            <span class="tool-soon-badge">Demnächst</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-card soon">
+        <div class="tool-icon">🧑‍💻</div>
+        <h3>German freelancer setup guide</h3>
+        <p>Freiberufler registration, Kleinunternehmerregelung, invoicing rules — everything to get started without the Finanzamt guesswork.</p>
+        <div class="tool-footer">
+          <span class="tool-price">Coming soon</span>
+          <div class="tool-footer-actions">
+            <span class="tool-btn-example disabled">Example</span>
+            <span class="tool-soon-badge">Demnächst</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-bg" id="how">
+  <div class="section-inner">
+    <div class="section-label">How it works</div>
+    <h2 class="section-title">Three steps. Thirty seconds.</h2>
+    <p class="section-sub">No account. No setup. Just paste or upload your document and get a plain-language explanation within seconds.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Paste or upload</h3>
+        <p>Copy the text from your document or upload a PDF. No formatting required — just the raw content.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>AI explains it</h3>
+        <p>Our German-calibrated AI breaks down every section in plain English — line by line, no jargon.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Understand your position</h3>
+        <p>Know what the document actually means, what to watch out for, and what questions to ask next.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY PLAINDEUTSCH -->
+<section id="why">
+  <div class="section-inner">
+    <div class="section-label">Why PlainDeutsch</div>
+    <h2 class="section-title">English AI tools get German wrong.</h2>
+    <p class="section-sub">German bureaucracy has its own logic, legal framework, and language. Generic AI tools miss the nuance. We don't.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="icon">🇩🇪</div>
+        <h3>German-calibrated AI</h3>
+        <p>Built by someone fluent in both German and English — with real knowledge of Mietrecht, Arbeitsrecht, and how German bureaucracy actually works.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">⚖️</div>
+        <h3>Explains, never advises</h3>
+        <p>We tell you what your document says in plain language. We never tell you what to do. That's your call — informed and confident.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">🔒</div>
+        <h3>GDPR-compliant by default</h3>
+        <p>Your documents are not stored beyond the session. No account required. No data retained after you get your result.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">⚡</div>
+        <h3>No lawyer, no waiting</h3>
+        <p>Get clarity in under a minute. For a fraction of the cost of a consultation — and before you need one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<section style="padding: 0 24px 64px;">
+  <div class="disclaimer">
+    <strong>Legal notice:</strong> PlainDeutsch explains documents in plain language. It does not provide legal advice (Rechtsberatung) and is not a substitute for a qualified lawyer (Rechtsanwalt). If you are in a legal dispute or need binding legal guidance, please consult a licensed legal professional. PlainDeutsch operates within the limits of the Rechtsdienstleistungsgesetz (RDG).
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">Plain<span style="color:var(--teal-m)">Deutsch</span></div>
+      <p>German documents. In plain English.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#tools">Tools</a>
+      <a href="mailto:plaindeutsch@gmail.com">Contact</a>
+      <a href="privacy.html">Privacy policy</a>
+      <a href="imprint.html">Imprint</a>
+    </div>
+    <div style="font-size:12px;color:rgba(255,255,255,.35);">© 2026 PlainDeutsch. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
