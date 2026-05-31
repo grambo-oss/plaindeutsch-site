@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example: Nebenkostenabrechnung explained — PlainDeutsch</title>
+  <meta name="description" content="See a real example of a Nebenkostenabrechnung explained in plain English by PlainDeutsch." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #1B2A4A; --teal: #1D9E75; --teal-l: #E8F7F2; --teal-m: #9FE1CB;
+      --off: #F9FAFB; --white: #FFFFFF; --gray: #6B7280; --border: #E5E7EB;
+      --text: #374151; --radius: 12px;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; color: var(--text); background: var(--off); line-height: 1.6; font-size: 16px; }
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { background: rgba(255,255,255,0.95); border-bottom: 1px solid var(--border); padding: 0 24px; position: sticky; top:0; z-index:100; backdrop-filter: blur(8px); }
+    .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; color: var(--navy); text-decoration: none; }
+    .logo span { color: var(--teal); }
+    .nav-right { display: flex; gap: 20px; align-items: center; font-size: 14px; }
+    .nav-btn { background: var(--teal); color: #fff; padding: 8px 18px; border-radius: 8px; font-weight: 500; font-size: 14px; transition: opacity .15s; }
+    .nav-btn:hover { opacity: .88; text-decoration: none; }
+
+    /* BANNER */
+    .example-banner {
+      background: var(--teal-l);
+      border-bottom: 1px solid #B2DFCF;
+      padding: 12px 24px;
+      text-align: center;
+      font-size: 14px;
+      color: #065F46;
+    }
+    .example-banner strong { font-weight: 600; }
+    .example-banner a { color: var(--teal); font-weight: 600; }
+
+    /* LAYOUT */
+    .page { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* DOC HEADER */
+    .doc-header { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 28px 32px; margin-bottom: 24px; }
+    .doc-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--teal); margin-bottom: 8px; }
+    .doc-title { font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 16px; letter-spacing: -.3px; }
+    .doc-meta { display: flex; flex-wrap: wrap; gap: 20px; }
+    .doc-meta-item { font-size: 13px; color: var(--gray); }
+    .doc-meta-item strong { color: var(--navy); font-weight: 600; display: block; font-size: 14px; }
+
+    /* RESULT BADGE */
+    .result-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .badge-owe { background: #FEF2F2; color: #DC2626; border: 1px solid #FECACA; }
+    .badge-refund { background: var(--teal-l); color: #065F46; border: 1px solid #B2DFCF; }
+
+    /* CARDS */
+    .card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 28px 32px; margin-bottom: 20px; }
+    .card-title { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .card-title .icon { font-size: 18px; }
+
+    /* SUMMARY */
+    .summary p { font-size: 15px; line-height: 1.75; color: var(--text); }
+
+    /* KEY NUMBERS */
+    .numbers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 560px) { .numbers-grid { grid-template-columns: 1fr; } }
+    .number-item { background: var(--off); border-radius: 8px; padding: 16px 18px; }
+    .number-label { font-size: 12px; color: var(--gray); font-weight: 500; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
+    .number-value { font-size: 22px; font-weight: 700; color: var(--navy); }
+    .number-note { font-size: 12px; color: var(--gray); margin-top: 2px; }
+    .number-item.highlight { background: #FEF2F2; border: 1px solid #FECACA; }
+    .number-item.highlight .number-value { color: #DC2626; }
+
+    /* CHARGES TABLE */
+    .charges-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .charges-table thead th { text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--gray); padding: 0 12px 10px; border-bottom: 1.5px solid var(--border); }
+    .charges-table thead th:last-child, .charges-table thead th:nth-child(3) { text-align: right; }
+    .charges-table tbody tr { border-bottom: 1px solid var(--border); }
+    .charges-table tbody tr:last-child { border-bottom: none; }
+    .charges-table tbody td { padding: 14px 12px; vertical-align: top; }
+    .charge-name { font-weight: 600; color: var(--navy); display: block; margin-bottom: 3px; }
+    .charge-de { font-size: 12px; color: var(--teal); }
+    .charge-desc { font-size: 13px; color: var(--gray); line-height: 1.5; margin-top: 4px; }
+    .charge-amount { font-weight: 600; color: var(--navy); text-align: right; white-space: nowrap; }
+    .charge-type { font-size: 12px; text-align: right; white-space: nowrap; }
+    .type-fixed { color: #6B7280; }
+    .type-usage { color: var(--teal); }
+    .charges-total { background: var(--off); }
+    .charges-total td { font-weight: 700; color: var(--navy); font-size: 15px; padding: 14px 12px; }
+
+    /* CHECKLIST */
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .check-list li { display: flex; gap: 12px; font-size: 14px; line-height: 1.6; }
+    .check-list li::before { content: "⚠️"; flex-shrink: 0; margin-top: 1px; }
+    .check-list li.ok::before { content: "✅"; }
+
+    /* NEXT STEPS */
+    .steps-list { list-style: none; counter-reset: steps; display: flex; flex-direction: column; gap: 16px; }
+    .steps-list li { display: flex; gap: 14px; align-items: flex-start; font-size: 14px; line-height: 1.65; counter-increment: steps; }
+    .step-num { min-width: 28px; height: 28px; background: var(--teal); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+    /* DISCLAIMER */
+    .disclaimer { background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 10px; padding: 16px 20px; font-size: 13px; color: #92400E; line-height: 1.65; margin-top: 24px; }
+
+    /* CTA */
+    .cta-card { background: var(--navy); border-radius: var(--radius); padding: 36px 32px; text-align: center; margin-top: 32px; }
+    .cta-card h2 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .cta-card p { font-size: 15px; color: rgba(255,255,255,.65); margin-bottom: 24px; }
+    .cta-btn { display: inline-block; background: var(--teal); color: #fff; font-size: 15px; font-weight: 600; padding: 13px 28px; border-radius: 10px; transition: opacity .15s; }
+    .cta-btn:hover { opacity: .88; text-decoration: none; }
+    .cta-note { font-size: 13px; color: rgba(255,255,255,.4); margin-top: 14px; }
+
+    /* FOOTER */
+    footer { background: var(--navy); color: rgba(255,255,255,.5); padding: 32px 24px; font-size: 13px; margin-top: 0; }
+    .footer-inner { max-width: 1080px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; align-items: center; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,.5); }
+    .footer-links a:hover { color: #fff; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Plain<span>Deutsch</span></a>
+    <div class="nav-right">
+      <a href="index.html">← All tools</a>
+      <a href="https://plaindeutsch.gumroad.com/l/wpkva" class="nav-btn">Explain my document →</a>
+    </div>
+  </div>
+</nav>
+
+<div class="example-banner">
+  <strong>This is an example output.</strong> The document below is fictional — it shows you exactly what you'll receive for your own Nebenkostenabrechnung. <a href="https://plaindeutsch.gumroad.com/l/wpkva">Try it with your document →</a>
+</div>
+
+<div class="page">
+
+  <!-- DOC HEADER -->
+  <div class="doc-header">
+    <div class="doc-label">Example result</div>
+    <div class="doc-title">Nebenkostenabrechnung — plain English explanation</div>
+    <div class="doc-meta">
+      <div class="doc-meta-item"><strong>Property</strong>Musterstraße 12, Apt. 3, 80331 München</div>
+      <div class="doc-meta-item"><strong>Billing period</strong>01 Jan 2024 – 31 Dec 2024</div>
+      <div class="doc-meta-item"><strong>Landlord</strong>Immobilienverwaltung Schmidt GmbH</div>
+      <div class="doc-meta-item"><strong>Generated by</strong>PlainDeutsch · plaindeutsch.com</div>
+    </div>
+  </div>
+
+  <span class="result-badge badge-owe">💸 You owe an additional €447.60 (Nachzahlung)</span>
+
+  <!-- SUMMARY -->
+  <div class="card summary">
+    <div class="card-title"><span class="icon">📋</span>Summary</div>
+    <p>This is your annual Nebenkostenabrechnung (utility cost statement) for the 2024 calendar year. Your landlord has calculated the actual costs of running the building — heating, water, refuse, building insurance, and maintenance — and compared them to the monthly advance payments (Vorauszahlungen) you made throughout the year.</p>
+    <p style="margin-top:12px;">You paid <strong>€2,400.00</strong> in advance payments during 2024. The actual costs allocated to your apartment came to <strong>€2,847.60</strong>, leaving a shortfall of <strong>€447.60</strong>. This amount (called a Nachzahlung) is owed to your landlord within 30 days of receiving this statement. The largest cost driver is central heating (Heizung), which accounts for nearly half the total bill — likely reflecting 2024's elevated energy prices.</p>
+  </div>
+
+  <!-- KEY NUMBERS -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🔢</span>Key numbers</div>
+    <div class="numbers-grid">
+      <div class="number-item">
+        <div class="number-label">Billing period</div>
+        <div class="number-value" style="font-size:17px;">Jan – Dec 2024</div>
+      </div>
+      <div class="number-item">
+        <div class="number-label">Total Betriebskosten</div>
+        <div class="number-value">€2,847.60</div>
+        <div class="number-note">Actual ancillary costs for your unit</div>
+      </div>
+      <div class="number-item">
+        <div class="number-label">Advance payments (Vorauszahlungen)</div>
+        <div class="number-value">€2,400.00</div>
+        <div class="number-note">€200/month × 12 months</div>
+      </div>
+      <div class="number-item highlight">
+        <div class="number-label">Amount you owe (Nachzahlung)</div>
+        <div class="number-value">€447.60</div>
+        <div class="number-note">Due within 30 days</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHARGES BREAKDOWN -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🧾</span>Charges breakdown</div>
+    <table class="charges-table">
+      <thead>
+        <tr>
+          <th style="width:40%">Charge</th>
+          <th style="width:30%"></th>
+          <th style="width:15%">Amount</th>
+          <th style="width:15%">Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <span class="charge-name">Central heating</span>
+            <span class="charge-de">Heizkosten</span>
+            <div class="charge-desc">Your share of the building's central heating system. Typically split 50–70% by actual consumption (based on heat meters in your flat) and 30–50% by floor area. This is your largest cost item.</div>
+          </td>
+          <td></td>
+          <td class="charge-amount">€1,124.40</td>
+          <td class="charge-type type-usage">Usage-based</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="charge-name">Hot water</span>
+            <span class="charge-de">Warmwasser</span>
+            <div class="charge-desc">Central hot water supply cost, split by your recorded consumption. Separate from heating in newer buildings with individual water meters.</div>
+          </td>
+          <td></td>
+          <td class="charge-amount">€312.80</td>
+          <td class="charge-type type-usage">Usage-based</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="charge-name">Cold water &amp; sewage</span>
+            <span class="charge-de">Kaltwasser / Entwässerung</span>
+            <div class="charge-desc">Cold water supply and sewage disposal, typically billed by usage according to your water meter readings.</div>
+          </td>
+          <td></td>
+          <td class="charge-amount">€198.20</td>
+          <td class="charge-type type-usage">Usage-based</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="charge-name">Building insurance</span>
+            <span class="charge-de">Gebäudeversicherung</span>
+            <div class="charge-desc">The landlord's insurance covering the building structure against fire, water damage, and storms. Passed on to tenants by floor area (Wohnfläche). You cannot choose this insurer.</div>
+          </td>
+          <td></td>
+          <td class="charge-amount">€187.50</td>
+          <td class="charge-type type-fixed">Fixed (by area)</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="charge-name">Property tax</span>
+            <span class="charge-de">Grundsteuer</span>
+            <div class="charge-desc">Municipal property tax levied on the landlord and passed on to tenants. Split by floor area. The amount is set by the municipality and outside the landlord's control.</div>
+          </td>
+          <td></td>
+          <td class="charge-amount">€156.80</td>
+          <td class="charge-type type-fixed">Fixed (by area)</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="charge-name">Refuse collection</span>
+            <span class="charge-de">Müllabfuhr</span>
+            <div class="charge-desc">Rubbish collection fees charged by the municipality. Usually split equally between all tenants or by floor area.</div>
+          </td>
+          <td></td>
+          <td class="charge-amount">€112.40</td>
+          <td class="charge-type type-fixed">Fixed (equal split)</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="charge-name">Stairwell cleaning &amp; caretaker</span>
+            <span class="charge-de">Hausreinigung / Hausmeister</span>
+            <div class="charge-desc">Cleaning of common areas (stairwells, entrance) and caretaker services. Split equally between all tenants. Landlord must provide receipts if requested.</div>
+          </td>
+          <td></td>
+          <td class="charge-amount">€398.50</td>
+          <td class="charge-type type-fixed">Fixed (equal split)</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="charge-name">Lift maintenance</span>
+            <span class="charge-de">Aufzug</span>
+            <div class="charge-desc">Annual service contract and maintenance for the building lift. All tenants pay regardless of whether they use it (standard German practice).</div>
+          </td>
+          <td></td>
+          <td class="charge-amount">€145.00</td>
+          <td class="charge-type type-fixed">Fixed (equal split)</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="charge-name">Garden &amp; outdoor maintenance</span>
+            <span class="charge-de">Gartenpflege</span>
+            <div class="charge-desc">Lawn cutting, snow clearing, and general outdoor upkeep. Permissible if your lease mentions Gartenpflege explicitly.</div>
+          </td>
+          <td></td>
+          <td class="charge-amount">€212.00</td>
+          <td class="charge-type type-fixed">Fixed (by area)</td>
+        </tr>
+        <tr class="charges-total">
+          <td colspan="2"><strong>Total Betriebskosten</strong></td>
+          <td class="charge-amount">€2,847.60</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- WHAT TO CHECK -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🔍</span>What to check</div>
+    <ul class="check-list">
+      <li>
+        <div><strong>Heating allocation key (Verteilerschlüssel)</strong> — By law, at least 50% of heating costs must be split by actual consumption (your heat meters), not purely by floor area. Check the allocation key shown in the Heizkosten breakdown. If it says 100% by area, this may be unlawful.</div>
+      </li>
+      <li>
+        <div><strong>12-month deadline</strong> — Your landlord must send the Nebenkostenabrechnung within 12 months of the billing period ending (i.e., by 31 December 2025 for the 2024 period). If it arrived late, you generally do not have to pay any Nachzahlung — though you still get any refund owed.</div>
+      </li>
+      <li>
+        <div><strong>Garden costs in your lease</strong> — Gartenpflege (€212.00) is only chargeable if it is explicitly listed in your rental agreement (Mietvertrag). Check your lease's Betriebskosten clause.</div>
+      </li>
+      <li class="ok">
+        <div><strong>No unusual one-off items</strong> — The charges listed are all standard recurring Betriebskosten. Repair and renovation costs (Instandhaltung) are not present, which is correct — these cannot be passed on to tenants.</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- WHAT TO DO NEXT -->
+  <div class="card">
+    <div class="card-title"><span class="icon">📌</span>What to do next</div>
+    <ol class="steps-list">
+      <li>
+        <span class="step-num">1</span>
+        <div><strong>Check the deadline first.</strong> Confirm when you received this statement. If it was delivered after 31 December 2025, you are not legally required to pay the Nachzahlung. If it arrived on time, you have 30 days to pay.</div>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <div><strong>Request receipts (Belege einsehen).</strong> You have a legal right to inspect the original receipts behind every charge. Write to your landlord requesting a Belegeinsicht. This is especially worth doing for the Hausmeister/Hausreinigung line (€398.50), which is the item most commonly inflated.</div>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <div><strong>If something looks wrong, contact a Mieterverein.</strong> Germany's tenants' associations (Mieterverein) offer professional, low-cost review of Nebenkostenabrechnungen. Annual membership (~€80–120) covers a full review. Find your local branch at <a href="https://www.mieterschutzbund.de" target="_blank">mieterschutzbund.de</a> or <a href="https://www.mieterbund.de" target="_blank">mieterbund.de</a>.</div>
+      </li>
+    </ol>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    <strong>Important:</strong> PlainDeutsch explains documents in plain language. It does not provide Rechtsberatung (legal advice) and is not a substitute for a Rechtsanwalt (lawyer). The explanation above is based on the text submitted and general knowledge of German tenancy law. If you are in a legal dispute or need binding guidance, please consult a licensed legal professional or your local Mieterverein.
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-card">
+    <h2>Get your own explanation</h2>
+    <p>Upload your Nebenkostenabrechnung and get a plain-English breakdown like this one — tailored to your document — in under 3 minutes.</p>
+    <a href="https://plaindeutsch.gumroad.com/l/wpkva" class="cta-btn">Explain my Nebenkostenabrechnung →</a>
+    <p class="cta-note">€5 per document · No account needed · Result by email</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <span style="font-size:17px;font-weight:700;color:#fff;letter-spacing:-.3px;">Plain<span style="color:var(--teal-m)">Deutsch</span></span>
+      <div style="margin-top:4px;font-size:12px;">German documents. In plain English.</div>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">All tools</a>
+      <a href="mailto:plaindeutsch@gmail.com">Contact</a>
+      <a href="privacy.html">Privacy policy</a>
+      <a href="imprint.html">Imprint</a>
+    </div>
+    <div style="font-size:12px;color:rgba(255,255,255,.3);">© 2026 PlainDeutsch</div>
+  </div>
+</footer>
+
+</body>
+</html>
