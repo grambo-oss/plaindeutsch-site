@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example: Mietvertrag explained — PlainDeutsch</title>
+  <meta name="description" content="See a real example of a German lease agreement (Mietvertrag) explained in plain English by PlainDeutsch." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #1B2A4A; --teal: #1D9E75; --teal-l: #E8F7F2; --teal-m: #9FE1CB;
+      --off: #F9FAFB; --white: #FFFFFF; --gray: #6B7280; --border: #E5E7EB;
+      --text: #374151; --radius: 12px;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; color: var(--text); background: var(--off); line-height: 1.6; font-size: 16px; }
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { background: rgba(255,255,255,0.95); border-bottom: 1px solid var(--border); padding: 0 24px; position: sticky; top:0; z-index:100; backdrop-filter: blur(8px); }
+    .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; color: var(--navy); text-decoration: none; }
+    .logo span { color: var(--teal); }
+    .nav-right { display: flex; gap: 20px; align-items: center; font-size: 14px; }
+    .nav-btn { background: var(--teal); color: #fff; padding: 8px 18px; border-radius: 8px; font-weight: 500; font-size: 14px; transition: opacity .15s; }
+    .nav-btn:hover { opacity: .88; text-decoration: none; }
+
+    /* BANNER */
+    .example-banner {
+      background: var(--teal-l);
+      border-bottom: 1px solid #B2DFCF;
+      padding: 12px 24px;
+      text-align: center;
+      font-size: 14px;
+      color: #065F46;
+    }
+    .example-banner strong { font-weight: 600; }
+    .example-banner a { color: var(--teal); font-weight: 600; }
+
+    /* LAYOUT */
+    .page { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* DOC HEADER */
+    .doc-header { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 28px 32px; margin-bottom: 24px; }
+    .doc-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--teal); margin-bottom: 8px; }
+    .doc-title { font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 16px; letter-spacing: -.3px; }
+    .doc-meta { display: flex; flex-wrap: wrap; gap: 20px; }
+    .doc-meta-item { font-size: 13px; color: var(--gray); }
+    .doc-meta-item strong { color: var(--navy); font-weight: 600; display: block; font-size: 14px; }
+
+    /* VERDICT BADGE */
+    .verdict-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .badge-caution { background: #FFFBEB; color: #92400E; border: 1px solid #FDE68A; }
+    .badge-ok { background: var(--teal-l); color: #065F46; border: 1px solid #B2DFCF; }
+
+    /* CARDS */
+    .card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 28px 32px; margin-bottom: 20px; }
+    .card-title { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .card-title .icon { font-size: 18px; }
+
+    /* SUMMARY */
+    .summary p { font-size: 15px; line-height: 1.75; color: var(--text); }
+
+    /* KEY TERMS GRID */
+    .terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 560px) { .terms-grid { grid-template-columns: 1fr; } }
+    .term-item { background: var(--off); border-radius: 8px; padding: 16px 18px; }
+    .term-label { font-size: 12px; color: var(--gray); font-weight: 500; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
+    .term-value { font-size: 18px; font-weight: 700; color: var(--navy); }
+    .term-note { font-size: 12px; color: var(--gray); margin-top: 2px; }
+    .term-item.alert { background: #FEF2F2; border: 1px solid #FECACA; }
+    .term-item.alert .term-value { color: #DC2626; }
+    .term-item.warn { background: #FFFBEB; border: 1px solid #FDE68A; }
+    .term-item.warn .term-value { color: #92400E; font-size: 15px; }
+
+    /* CLAUSE TABLE */
+    .clause-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .clause-table thead th { text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--gray); padding: 0 12px 10px; border-bottom: 1.5px solid var(--border); }
+    .clause-table tbody tr { border-bottom: 1px solid var(--border); }
+    .clause-table tbody tr:last-child { border-bottom: none; }
+    .clause-table tbody td { padding: 14px 12px; vertical-align: top; }
+    .clause-name { font-weight: 600; color: var(--navy); display: block; margin-bottom: 3px; }
+    .clause-de { font-size: 12px; color: var(--teal); }
+    .clause-desc { font-size: 13px; color: var(--gray); line-height: 1.5; margin-top: 4px; }
+    .clause-status { font-size: 12px; text-align: right; white-space: nowrap; font-weight: 600; }
+    .status-ok { color: var(--teal); }
+    .status-warn { color: #D97706; }
+    .status-flag { color: #DC2626; }
+
+    /* FLAGS */
+    .flag-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .flag-list li { display: flex; gap: 14px; font-size: 14px; line-height: 1.65; padding: 14px 16px; border-radius: 10px; }
+    .flag-list li.flag-red { background: #FEF2F2; border: 1px solid #FECACA; }
+    .flag-list li.flag-amber { background: #FFFBEB; border: 1px solid #FDE68A; }
+    .flag-list li.flag-green { background: var(--teal-l); border: 1px solid #B2DFCF; }
+    .flag-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .flag-text strong { display: block; font-weight: 700; color: var(--navy); margin-bottom: 4px; font-size: 14px; }
+
+    /* NEXT STEPS */
+    .steps-list { list-style: none; counter-reset: steps; display: flex; flex-direction: column; gap: 16px; }
+    .steps-list li { display: flex; gap: 14px; align-items: flex-start; font-size: 14px; line-height: 1.65; }
+    .step-num { min-width: 28px; height: 28px; background: var(--teal); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+    /* DISCLAIMER */
+    .disclaimer { background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 10px; padding: 16px 20px; font-size: 13px; color: #92400E; line-height: 1.65; margin-top: 24px; }
+
+    /* CTA */
+    .cta-card { background: var(--navy); border-radius: var(--radius); padding: 36px 32px; text-align: center; margin-top: 32px; }
+    .cta-card h2 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .cta-card p { font-size: 15px; color: rgba(255,255,255,.65); margin-bottom: 24px; }
+    .cta-btn { display: inline-block; background: var(--teal); color: #fff; font-size: 15px; font-weight: 600; padding: 13px 28px; border-radius: 10px; transition: opacity .15s; }
+    .cta-btn:hover { opacity: .88; text-decoration: none; }
+    .cta-note { font-size: 13px; color: rgba(255,255,255,.4); margin-top: 14px; }
+
+    /* FOOTER */
+    footer { background: var(--navy); color: rgba(255,255,255,.5); padding: 32px 24px; font-size: 13px; }
+    .footer-inner { max-width: 1080px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; align-items: center; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,.5); }
+    .footer-links a:hover { color: #fff; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Plain<span>Deutsch</span></a>
+    <div class="nav-right">
+      <a href="index.html">← All tools</a>
+      <a href="https://plaindeutsch.gumroad.com/l/bsfhcu" class="nav-btn">Explain my lease →</a>
+    </div>
+  </div>
+</nav>
+
+<div class="example-banner">
+  <strong>This is an example output.</strong> The document below is fictional — it shows you exactly what you'll receive for your own Mietvertrag. <a href="https://plaindeutsch.gumroad.com/l/bsfhcu">Explain my lease →</a>
+</div>
+
+<div class="page">
+
+  <!-- DOC HEADER -->
+  <div class="doc-header">
+    <div class="doc-label">Example result</div>
+    <div class="doc-title">Mietvertrag — plain English explanation</div>
+    <div class="doc-meta">
+      <div class="doc-meta-item"><strong>Property</strong>Berliner Str. 47, Apt. 2OG links, 10115 Berlin</div>
+      <div class="doc-meta-item"><strong>Landlord</strong>HausVerwaltung Müller GmbH</div>
+      <div class="doc-meta-item"><strong>Lease start</strong>1 August 2024</div>
+      <div class="doc-meta-item"><strong>Generated by</strong>PlainDeutsch · plaindeutsch.com</div>
+    </div>
+  </div>
+
+  <span class="verdict-badge badge-caution">⚠️ 3 clauses need your attention before signing</span>
+
+  <!-- SUMMARY -->
+  <div class="card summary">
+    <div class="card-title"><span class="icon">📋</span>Summary</div>
+    <p>This is a standard German residential lease (Mietvertrag) for a 68 m² two-bedroom apartment in Berlin-Mitte. The contract is an indefinite tenancy (unbefristeter Mietvertrag), which is the norm in Germany and gives you strong protection against termination.</p>
+    <p style="margin-top:12px;">Your total monthly rent is <strong>€1,380</strong> — made up of <strong>€1,100 cold rent (Kaltmiete)</strong> and a <strong>€280 utilities advance (Vorauszahlung)</strong>. The deposit (Kaution) is <strong>€3,300</strong>, which is exactly three months' cold rent — the legal maximum under German law.</p>
+    <p style="margin-top:12px;">The contract contains a <strong>rent increase clause (Staffelmiete)</strong> that automatically raises your rent by €50/month every 12 months for three years. There is also a <strong>cosmetic repairs clause (Schönheitsreparaturen)</strong> that tries to make you responsible for repainting — this clause may be legally void under current case law. Both are flagged below.</p>
+  </div>
+
+  <!-- KEY TERMS -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🔑</span>Key terms at a glance</div>
+    <div class="terms-grid">
+      <div class="term-item">
+        <div class="term-label">Cold rent (Kaltmiete)</div>
+        <div class="term-value">€1,100 / month</div>
+        <div class="term-note">Base rent, excluding utilities</div>
+      </div>
+      <div class="term-item">
+        <div class="term-label">Utilities advance (Vorauszahlung)</div>
+        <div class="term-value">€280 / month</div>
+        <div class="term-note">Reconciled annually via Nebenkostenabrechnung</div>
+      </div>
+      <div class="term-item">
+        <div class="term-label">Total monthly payment</div>
+        <div class="term-value">€1,380 / month</div>
+        <div class="term-note">Warmmiete — due on the 3rd of each month</div>
+      </div>
+      <div class="term-item">
+        <div class="term-label">Deposit (Kaution)</div>
+        <div class="term-value">€3,300</div>
+        <div class="term-note">= 3× Kaltmiete. Legal maximum.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-label">Apartment size</div>
+        <div class="term-value">68 m²</div>
+        <div class="term-note">Floor area (Wohnfläche) — binding for rent calculations</div>
+      </div>
+      <div class="term-item warn">
+        <div class="term-label">Rent increases (Staffelmiete)</div>
+        <div class="term-value">+€50/year for 3 years</div>
+        <div class="term-note">Rises to €1,250 by Aug 2027. Legally valid.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-label">Notice period (Kündigungsfrist)</div>
+        <div class="term-value">3 months</div>
+        <div class="term-note">Standard for tenants. Landlord needs 3–9 months.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-label">Pets (Haustiere)</div>
+        <div class="term-value">Written permission required</div>
+        <div class="term-note">Small animals (hamsters, fish) generally permitted by law</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLAUSE BREAKDOWN -->
+  <div class="card">
+    <div class="card-title"><span class="icon">📄</span>Key clauses explained</div>
+    <table class="clause-table">
+      <thead>
+        <tr>
+          <th style="width:55%">Clause</th>
+          <th style="width:30%"></th>
+          <th style="width:15%">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <span class="clause-name">Indefinite tenancy (Unbefristeter Mietvertrag)</span>
+            <span class="clause-de">§ 3 Mietdauer</span>
+            <div class="clause-desc">The lease has no end date. In Germany this is strongly protective: your landlord can only terminate you for specific legal reasons (own use, significant contract breach, or planned demolition/redevelopment). You cannot be asked to leave simply because the landlord wants to.</div>
+          </td>
+          <td></td>
+          <td class="clause-status status-ok">✔ Tenant-friendly</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="clause-name">Stepped rent (Staffelmiete)</span>
+            <span class="clause-de">§ 5 Miete</span>
+            <div class="clause-desc">Your rent increases by a fixed €50/month every 12 months for three years: €1,100 → €1,150 → €1,200 → €1,250. After the three steps, further increases are only possible via standard Mieterhöhung rules (capped at the local Mietspiegel). Staffelmieten are legal but must be clearly stated — this one is. Berlin's Mietendeckel was struck down; these increases are valid.</div>
+          </td>
+          <td></td>
+          <td class="clause-status status-warn">⚠ Review</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="clause-name">Cosmetic repairs (Schönheitsreparaturen)</span>
+            <span class="clause-de">§ 14 Instandhaltung</span>
+            <div class="clause-desc">The contract states you must repaint walls, ceilings, and doors when you leave, on a fixed schedule (every 5 years for living rooms, every 3 years for kitchens/bathrooms). The BGH (Germany's highest civil court) has ruled that rigid schedule-based clauses are void — you only need to repaint if your normal use actually caused the need. This clause is likely unenforceable as written.</div>
+          </td>
+          <td></td>
+          <td class="clause-status status-flag">⚑ Likely void</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="clause-name">Subletting (Untermiete)</span>
+            <span class="clause-de">§ 9 Untervermietung</span>
+            <div class="clause-desc">Subletting requires written approval from the landlord in advance. Under German law (§ 553 BGB), you have a right to sublet part of your apartment if you have a legitimate interest (e.g. financial hardship, relationship change) — the landlord can only refuse if they have a serious reason. The clause as written is stricter than the law, but the law takes precedence.</div>
+          </td>
+          <td></td>
+          <td class="clause-status status-ok">✔ Law protects you</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="clause-name">Deposit (Kaution)</span>
+            <span class="clause-de">§ 6 Kaution</span>
+            <div class="clause-desc">€3,300 due in three equal monthly instalments starting with the first month's rent. You are entitled to keep this in a separate account earning interest (Sparbuch) — ask the landlord to confirm the account details. The landlord has up to 6 months after you move out to return it, minus legitimate deductions for damage. They cannot deduct for normal wear and tear (normale Abnutzung).</div>
+          </td>
+          <td></td>
+          <td class="clause-status status-ok">✔ Standard</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="clause-name">Noise and quiet hours (Ruhezeiten)</span>
+            <span class="clause-de">§ 11 Hausordnung</span>
+            <div class="clause-desc">Midday quiet: 13:00–15:00. Night quiet: 22:00–07:00. No power tools on Sundays or public holidays. This is standard across German tenancies and mirrors local bylaw (Berliner Lärm-Immissionsschutzgesetz). Normal household noise (music at reasonable volume, children playing) is always permitted.</div>
+          </td>
+          <td></td>
+          <td class="clause-status status-ok">✔ Standard</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FLAGS -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🚩</span>Things to check before you sign</div>
+    <ul class="flag-list">
+      <li class="flag-red">
+        <span class="flag-icon">🔴</span>
+        <div class="flag-text">
+          <strong>Schönheitsreparaturen clause — likely void but confirm in writing</strong>
+          The repainting schedule in § 14 is almost certainly unenforceable based on BGH case law (BGH VIII ZR 199/13 and related rulings). However, landlords still try to enforce it. Before signing, ask the landlord in writing to confirm that they accept this clause is subject to BGH case law — or cross it out and have both parties initial the deletion. Keep all written communications.
+        </div>
+      </li>
+      <li class="flag-amber">
+        <span class="flag-icon">🟡</span>
+        <div class="flag-text">
+          <strong>Staffelmiete — factor the increases into your budget now</strong>
+          You are agreeing to pay €1,250/month from August 2027 onwards. Check the Berlin Mietspiegel (local rent index) for Berliner Str., 10115 Berlin to verify this is within the allowed range for your flat's age, size, and features. The city's official Mietspiegel calculator is free to use at stadtentwicklung.berlin.de.
+        </div>
+      </li>
+      <li class="flag-amber">
+        <span class="flag-icon">🟡</span>
+        <div class="flag-text">
+          <strong>Übergabeprotokoll — document the flat's condition on move-in</strong>
+          The contract does not mention a move-in inspection report (Übergabeprotokoll). Insist on doing one before or on day one. Photograph every scratch, scuff, and imperfection. Both you and the landlord should sign it. This is your primary protection against deposit deductions when you eventually leave — without it, disputes are common.
+        </div>
+      </li>
+      <li class="flag-green">
+        <span class="flag-icon">✅</span>
+        <div class="flag-text">
+          <strong>Deposit amount is at the legal maximum — no more can be demanded</strong>
+          German law (§ 551 BGB) caps deposits at three months' cold rent. Your deposit is exactly €3,300 = 3 × €1,100. Any additional "security" payment, key deposit above actual cost, or advance rent cannot be legally required.
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- NEXT STEPS -->
+  <div class="card">
+    <div class="card-title"><span class="icon">✅</span>Your next steps</div>
+    <ol class="steps-list">
+      <li>
+        <span class="step-num">1</span>
+        <span><strong>Check the Mietspiegel.</strong> Use the Berlin Mietspiegel at stadtentwicklung.berlin.de to verify the rent and Staffelmiete steps are within the legal range for your building. If the rent exceeds the Mietspiegel by more than 10%, you may have grounds to challenge it under Mietpreisbremse rules.</span>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <span><strong>Address the Schönheitsreparaturen clause before signing.</strong> Email the landlord asking them to confirm this clause is subject to BGH case law, or to delete it. Get any response in writing. A tenant association (Mieterverein) can help draft the letter for €10–20.</span>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <span><strong>Do a thorough Übergabeprotokoll.</strong> On move-in day, inspect every room with the landlord present. Document and photograph everything. Both parties sign. Keep a copy. This one step prevents the majority of deposit disputes.</span>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <span><strong>Register your address (Anmeldung).</strong> You must register with the local Bürgeramt within 14 days of moving in. The landlord must provide a signed Wohnungsgeberbestätigung form — make sure this is arranged before or at the time you get the keys. Without it, you cannot register.</span>
+      </li>
+      <li>
+        <span class="step-num">5</span>
+        <span><strong>Join a Mieterverein.</strong> For €8–12/month, a tenants' association gives you access to legal advice on any future disputes, rent increase challenges, and repair obligations. Given the Schönheitsreparaturen situation, this is a worthwhile investment for the duration of your tenancy.</span>
+      </li>
+    </ol>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Not legal advice.</strong> This explanation is for information only and does not constitute legal advice. PlainDeutsch explains documents in plain language — it does not advise on specific legal disputes or individual circumstances. For legal advice, consult a Mieterverein (tenant association) or a qualified Rechtsanwalt (lawyer). Under German law (RDG), this service is limited to document explanation.
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-card">
+    <h2>Ready to understand your own Mietvertrag?</h2>
+    <p>Upload your lease and get a full plain-English explanation within minutes — €8, delivered by email.</p>
+    <a href="https://plaindeutsch.gumroad.com/l/bsfhcu" class="cta-btn">Explain my Mietvertrag →</a>
+    <div class="cta-note">PDF or DOCX · Results by email · No account needed</div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2025 PlainDeutsch · Not legal advice</span>
+    <div class="footer-links">
+      <a href="index.html">All tools</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="mailto:plaindeutsch@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
