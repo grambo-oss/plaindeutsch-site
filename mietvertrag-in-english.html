@@ -97,44 +97,45 @@
     /* QUICK REFERENCE */
     .quick-ref {
       background: var(--off); border: 1px solid var(--border);
-      border-radius: 10px; padding: 24px; margin: 32px 0;
+      border-radius: 10px; padding: 20px 24px 24px; margin: 32px 0;
     }
-    .quick-ref h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 14px; }
-    .quick-ref table { width: 100%; border-collapse: collapse; font-size: 14px; }
-    .quick-ref td { padding: 6px 0; vertical-align: top; }
-    .quick-ref td:first-child { font-weight: 600; color: var(--navy); width: 46%; padding-right: 12px; }
+    .quick-ref h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-top: 0; margin-bottom: 10px; }
+    .quick-ref table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .quick-ref td { padding: 9px 0; vertical-align: middle; border-bottom: 1px solid var(--border); }
+    .quick-ref tr:last-child td { border-bottom: none; }
+    .quick-ref td:first-child { font-weight: 600; color: var(--navy); width: 36%; padding-right: 12px; }
     .quick-ref td:last-child { color: var(--gray); }
 
     /* ALERT BOX */
     .alert {
       background: #FFFBEB; border: 1px solid #FDE68A;
-      border-radius: 8px; padding: 16px 20px; margin: 24px 0;
-      font-size: 14px; color: #92400E; line-height: 1.65;
+      border-radius: 8px; padding: 12px 16px 16px; margin: 24px 0;
+      font-size: 14px; color: #92400E; line-height: 1.65; text-align: center;
     }
     .alert strong { font-weight: 700; }
 
     /* INFO BOX */
     .info-box {
       background: var(--teal-l); border: 1px solid var(--teal-m);
-      border-radius: 8px; padding: 16px 20px; margin: 24px 0;
-      font-size: 14px; color: var(--navy); line-height: 1.65;
+      border-radius: 8px; padding: 12px 16px 16px; margin: 24px 0;
+      font-size: 14px; color: var(--navy); line-height: 1.65; text-align: center;
     }
     .info-box strong { font-weight: 700; }
 
     /* UNENFORCEABLE BOX */
     .unenforce {
       background: #FEF2F2; border: 1px solid #FCA5A5;
-      border-radius: 8px; padding: 16px 20px; margin: 24px 0;
-      font-size: 14px; color: #7F1D1D; line-height: 1.65;
+      border-radius: 8px; padding: 12px 16px 16px; margin: 24px 0;
+      font-size: 14px; color: #7F1D1D; line-height: 1.65; text-align: center;
     }
     .unenforce strong { font-weight: 700; }
 
     /* CTA BOX */
     .cta-box {
       background: var(--navy); border-radius: 12px;
-      padding: 32px; margin: 48px 0; text-align: center;
+      padding: 24px 32px 32px; margin: 48px 0; text-align: center;
     }
-    .cta-box h3 { color: #fff; font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .cta-box h3 { color: #fff; font-size: 20px; font-weight: 700; margin-top: 0; margin-bottom: 8px; }
     .cta-box p { color: rgba(255,255,255,.7); font-size: 15px; margin-bottom: 20px; }
     .cta-btn {
       display: inline-block; background: var(--teal); color: #fff;
@@ -142,7 +143,7 @@
     }
     .cta-btn:hover { opacity: .88; }
     .cta-example {
-      display: inline-block; color: rgba(255,255,255,.6);
+      display: block; color: rgba(255,255,255,.6);
       font-size: 13px; margin-top: 12px; text-decoration: none;
     }
     .cta-example:hover { color: #fff; }
@@ -196,7 +197,7 @@
 
   <div class="article-tag">Renting in Germany</div>
   <h1 class="article-title">German Lease Agreement in English — How to Read Your Mietvertrag</h1>
-  <p class="article-intro">Signing a Mietvertrag in Germany is a big commitment — typically open-ended, with a three-month notice period and strict rules on everything from painting the walls to taking in a flatmate. This guide explains every key clause in plain English, including the ones that are more favourable to tenants than most people realise.</p>
+  <p class="article-intro">Signing a Mietvertrag in Germany is a big commitment — typically open-ended, with a three-month notice period and strict rules on everything from painting the walls to taking in a flatmate. If you've been searching for a Mietvertrag in English, or need a plain-English explanation of your German lease agreement before you sign, this guide explains every key clause — including the ones that are more favourable to tenants than most people realise.</p>
 
   <div class="article-body">
 
@@ -258,6 +259,13 @@
       <strong>Practically speaking:</strong> German tenant protections on notice are significantly stronger than in the UK, Canada, or the US. A landlord cannot simply decide to end your tenancy — they need a specific legal justification.
     </div>
 
+    <div class="cta-box">
+      <h3>Don't want to read through this yourself?</h3>
+      <p>Upload your Mietvertrag and get a plain-English breakdown — every clause explained in minutes.</p>
+      <a href="https://plaindeutsch.gumroad.com/l/bsfhcu" class="cta-btn">Get your explanation — €8 →</a>
+      <a href="example-mietvertrag.html" class="cta-example">See an example output first</a>
+    </div>
+
     <h2>Rent increases (Mieterhöhung)</h2>
     <p>Your landlord cannot simply increase your rent at will. Increases are regulated by two mechanisms:</p>
     <p><strong>Mietpreisbremse (rent brake):</strong> In designated areas — which includes most major German cities — new tenancies cannot be priced more than 10% above the local reference rent (<strong>Mietspiegel</strong>). Increases during an existing tenancy are separately regulated.</p>
@@ -276,6 +284,8 @@
     <p>German law distinguishes between pets that require permission and those that don't. Small animals — hamsters, fish, birds in reasonable numbers — are generally allowed without permission. Dogs and cats are a different matter.</p>
     <p>A blanket prohibition on pets in a lease is generally <strong>not enforceable</strong> (BGH rulings). However, a landlord can refuse permission for a specific animal if there is a valid reason (e.g. allergies of other tenants, size of the flat, house rules). A clause saying "no pets whatsoever, under any circumstances" has been repeatedly overturned by German courts.</p>
 
+    <p>Once you've moved in, you'll receive an annual <strong>Nebenkostenabrechnung</strong> — a breakdown of the shared building costs charged against your monthly advance payments. Our guide to <a href="nebenkostenabrechnung-in-english.html">reading a Nebenkostenabrechnung in English</a> explains what every line means and how to spot errors in your favour.</p>
+
     <h2>What to check before you sign</h2>
     <ol>
       <li><strong>Kaution amount</strong> — is it within the legal maximum of three months' Kaltmiete?</li>
@@ -287,34 +297,11 @@
     </ol>
 
     <div class="cta-box">
-      <h3>Don't want to read through this yourself?</h3>
-      <p>Upload your Mietvertrag and get a plain-English clause-by-clause breakdown — notice periods, deposit rules, Schönheitsreparaturen, rent increases, and everything to check before you sign.</p>
-      <a href="https://plaindeutsch.gumroad.com/l/bsfhcu" class="cta-btn">Get your explanation — €8 →</a><br>
+      <h3>Upload your Mietvertrag</h3>
+      <p>Paste the text or upload your PDF. Get a plain-English breakdown of every clause — what it means, what's unenforceable, and what to check before you sign.</p>
+      <a href="https://plaindeutsch.gumroad.com/l/bsfhcu" class="cta-btn">Analyse my lease — €8 →</a>
       <a href="example-mietvertrag.html" class="cta-example">See an example output first</a>
     </div>
 
     <div class="disclaimer-footer">
-      <strong>Note:</strong> This guide is for informational purposes only. PlainDeutsch explains documents in plain language — it does not provide Rechtsberatung (legal advice) and is not a substitute for a qualified Rechtsanwalt. For specific legal disputes or before taking any action based on your lease, please consult a licensed lawyer or contact your local Mieterverein.
-    </div>
-
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="logo">Plain<span style="color:var(--teal-m)">Deutsch</span></div>
-      <p>German documents. In plain English.</p>
-      <p style="margin-top:6px;font-size:12px;color:rgba(255,255,255,.45);">plaindeutsch@gmail.com</p>
-    </div>
-    <div class="footer-links">
-      <a href="index.html#tools">Tools</a>
-      <a href="blog.html">Articles</a>
-      <a href="mailto:plaindeutsch@gmail.com">Contact</a>
-      <a href="privacy.html">Privacy policy</a>
-      <a href="imprint.html">Imprint</a>
-    </div>
-    <div style="font-size:12px;color:rgba(255,255,255,.35);">© 2026 PlainDeutsch. All rights reserved.</div>
-  </div>
-</footer>
+      <strong>Note:</strong> This guide is for informational purposes only. Pla
