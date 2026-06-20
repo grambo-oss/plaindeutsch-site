@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Articles — German Documents Explained in Plain English | PlainDeutsch</title>
+  <meta name="description" content="Plain-English guides to German bureaucracy, leases, utility bills, and more. Written for English-speaking expats living in Germany." />
+  <link rel="canonical" href="https://plaindeutsch.netlify.app/blog.html" />
+  <style>
+    html { overflow-y: scroll; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #1B2A4A; --teal: #1D9E75; --teal-l: #E8F7F2; --teal-m: #9FE1CB;
+      --off: #F9FAFB; --white: #FFFFFF; --gray: #6B7280; --border: #E5E7EB; --text: #374151;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      color: var(--text); background: var(--white); line-height: 1.7; font-size: 16px;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border); padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1080px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      align-items: center; height: 60px;
+    }
+    .nav-inner .nav-cta { justify-self: end; }
+    .logo { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; color: var(--navy); }
+    .logo span { color: var(--teal); }
+    .nav-links { display: flex; gap: 24px; font-size: 14px; color: var(--gray); list-style: none; }
+    .nav-links a { color: var(--gray); }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-links .active { color: var(--navy); }
+    .nav-cta {
+      background: var(--teal); color: #fff; font-size: 14px; font-weight: 500;
+      padding: 8px 18px; border-radius: 8px; line-height: 1.6;
+    }
+    @media (max-width: 640px) { .nav-links { display: none; } }
+
+    /* PAGE HEADER */
+    .page-header {
+      background: linear-gradient(160deg, #F0FAF6 0%, #FFFFFF 55%);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 24px 48px;
+    }
+    .page-header-inner { max-width: 760px; margin: 0 auto; }
+    .page-tag {
+      display: inline-block; background: var(--teal-l); color: var(--teal);
+      font-size: 12px; font-weight: 600; letter-spacing: .06em;
+      text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px;
+    }
+    .page-header h1 {
+      font-size: clamp(28px, 4vw, 40px); font-weight: 800; line-height: 1.2;
+      letter-spacing: -0.5px; color: var(--navy); margin-bottom: 12px;
+    }
+    .page-header p {
+      font-size: 17px; color: var(--gray); line-height: 1.65; max-width: 560px;
+    }
+
+    /* ARTICLES GRID */
+    .articles-wrap { max-width: 1080px; margin: 0 auto; padding: 56px 24px 80px; }
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ARTICLE CARD */
+    .article-card {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 12px;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .article-card:hover {
+      border-color: var(--teal-m); box-shadow: 0 4px 20px rgba(29,158,117,.08);
+    }
+    .article-category {
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--teal);
+    }
+    .article-card h2 {
+      font-size: 18px; font-weight: 700; color: var(--navy);
+      line-height: 1.3; letter-spacing: -0.2px;
+    }
+    .article-card p {
+      font-size: 14px; color: var(--gray); line-height: 1.6; flex: 1;
+    }
+    .article-card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 14px; border-top: 1px solid var(--border);
+    }
+    .article-meta { font-size: 12px; color: var(--gray); }
+    .article-link {
+      font-size: 13px; font-weight: 600; color: var(--teal);
+    }
+    .article-link:hover { text-decoration: underline; }
+
+    /* RELATED TOOLS */
+    .related-tools {
+      background: var(--off); border-top: 1px solid var(--border);
+      padding: 52px 24px;
+    }
+    .related-inner { max-width: 1080px; margin: 0 auto; text-align: center; }
+    .related-inner h2 {
+      font-size: 22px; font-weight: 700; color: var(--navy);
+      margin-bottom: 8px; letter-spacing: -0.3px;
+    }
+    .related-inner p { font-size: 15px; color: var(--gray); margin-bottom: 28px; }
+    .tools-row { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; max-width: 680px; margin: 0 auto; }
+    .tool-pill {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: 10px; padding: 14px 20px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: border-color .2s;
+      flex: 1; min-width: 260px;
+    }
+    .tool-pill:hover { border-color: var(--teal); }
+    .tool-pill .icon { font-size: 18px; }
+    .tool-pill-text .name { font-size: 14px; font-weight: 600; color: var(--navy); }
+    .tool-pill-text .price { font-size: 12px; color: var(--gray); margin-top: 2px; }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy); color: rgba(255,255,255,.6);
+      padding: 40px 24px; font-size: 13px;
+    }
+    .footer-inner {
+      max-width: 1080px; margin: 0 auto;
+      display: flex; flex-wrap: wrap; gap: 24px;
+      justify-content: space-between; align-items: center;
+    }
+    .footer-brand .logo { color: #fff; font-size: 18px; }
+    .footer-brand p { margin-top: 6px; font-size: 12px; color: rgba(255,255,255,.45); }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,.55); }
+    .footer-links a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Plain<span>Deutsch</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#tools">Tools</a></li>
+      <li><a href="index.html#how">How it works</a></li>
+      <li><a href="index.html#why">Why PlainDeutsch</a></li>
+      <li><a href="blog.html" class="active">Articles</a></li>
+    </ul>
+    <a href="index.html#tools" class="nav-cta">Try it now</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-tag">Free guides</div>
+    <h1>German documents, explained.</h1>
+    <p>Plain-English guides to the documents and bureaucracy that confuse English-speaking expats most. No jargon. No lawyer needed.</p>
+  </div>
+</div>
+
+<!-- ARTICLES -->
+<div class="articles-wrap">
+  <div class="articles-grid">
+
+    <a href="nebenkostenabrechnung-in-english.html" class="article-card">
+      <div class="article-category">Utilities &amp; Housing</div>
+      <h2>Nebenkostenabrechnung in English — What It Means and What to Check</h2>
+      <p>Every section of your annual German utility cost statement, explained in plain English. Includes which costs are legally allowed, how to spot errors, and your 12-month right to dispute.</p>
+      <div class="article-card-footer">
+        <span class="article-meta">8 min read</span>
+        <span class="article-link">Read the guide →</span>
+      </div>
+    </a>
+
+    <a href="mietvertrag-in-english.html" class="article-card">
+      <div class="article-category">Renting in Germany</div>
+      <h2>German Lease Agreement in English — How to Read Your Mietvertrag</h2>
+      <p>The clauses that matter most: Kaution limits, Schönheitsreparaturen (frequently unenforceable), notice periods, rent increase rules, and what to check before you sign.</p>
+      <div class="article-card-footer">
+        <span class="article-meta">10 min read</span>
+        <span class="article-link">Read the guide →</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- RELATED TOOLS -->
+<div class="related-tools">
+  <div class="related-inner">
+    <h2>Want this done for you?</h2>
+    <p>Upload your own document and get a personalised plain-English explanation within minutes.</p>
+    <div class="tools-row">
+      <a href="https://plaindeutsch.gumroad.com/l/wpkva" class="tool-pill">
+        <span class="icon">🧾</span>
+        <div class="tool-pill-text">
+          <div class="name">Nebenkostenabrechnung explainer</div>
+          <div class="price">€5 per document</div>
+        </div>
+      </a>
+      <a href="https://plaindeutsch.gumroad.com/l/bsfhcu" class="tool-pill">
+        <span class="icon">🏠</span>
+        <div class="tool-pill-text">
+          <div class="name">Mietvertrag explainer</div>
+          <div class="price">€8 per document</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">Plain<span style="color:var(--teal-m)">Deutsch</span></div>
+      <p>German documents. In plain English.</p>
+      <p style="margin-top:6px;font-size:12px;color:rgba(255,255,255,.45);">plaindeutsch@gmail.com</p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html#tools">Tools</a>
+      <a href="blog.html">Articles</a>
+      <a href="mailto:plaindeutsch@gmail.com">Contact</a>
+      <a href="privacy.html">Privacy policy</a>
+      <a href="imprint.html">Imprint</a>
+    </div>
+    <div style="font-size:12px;color
