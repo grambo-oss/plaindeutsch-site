@@ -3,8 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PlainDeutsch — German documents in plain English</title>
-  <meta name="description" content="AI-powered tools that explain German bureaucracy, contracts, and documents in plain language. No jargon. No lawyer needed." />
+  <title>PlainDeutsch — Understand German documents in plain English</title>
+  <meta name="description" content="Understand your German Mietvertrag or Nebenkostenabrechnung in plain English. Paste or upload it and get an explanation by email. Not legal advice." />
+  <link rel="canonical" href="https://plaindeutsch.netlify.app/" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PlainDeutsch" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:title" content="PlainDeutsch — Understand German documents in plain English" />
+  <meta property="og:description" content="Understand your German Mietvertrag or Nebenkostenabrechnung in plain English. Paste or upload it and get an explanation by email. Not legal advice." />
+  <meta property="og:url" content="https://plaindeutsch.netlify.app/" />
+  <meta property="og:image" content="https://plaindeutsch.netlify.app/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="PlainDeutsch — German documents. In plain English." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PlainDeutsch — Understand German documents in plain English" />
+  <meta name="twitter:description" content="Understand your German Mietvertrag or Nebenkostenabrechnung in plain English. Paste or upload it and get an explanation by email. Not legal advice." />
+  <meta name="twitter:image" content="https://plaindeutsch.netlify.app/og-image.png" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://plaindeutsch.netlify.app/#org",
+      "name": "PlainDeutsch",
+      "url": "https://plaindeutsch.netlify.app/",
+      "logo": "https://plaindeutsch.netlify.app/favicon-192.png",
+      "description": "Plain-English explanations of German documents for English-speaking expats in Germany.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "plaindeutsch@gmail.com",
+        "availableLanguage": [
+          "English",
+          "German"
+        ]
+      },
+      "sameAs": [
+        "https://plaindeutsch.gumroad.com"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://plaindeutsch.netlify.app/#website",
+      "url": "https://plaindeutsch.netlify.app/",
+      "name": "PlainDeutsch",
+      "inLanguage": "en",
+      "publisher": {
+        "@id": "https://plaindeutsch.netlify.app/#org"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://plaindeutsch.netlify.app/nebenkostenabrechnung-in-english.html#app",
+      "name": "Nebenkostenabrechnung explainer",
+      "description": "Plain-English explanation of a German annual utility cost statement (Nebenkostenabrechnung), delivered by email.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web",
+      "inLanguage": "en",
+      "url": "https://plaindeutsch.netlify.app/nebenkostenabrechnung-in-english.html",
+      "provider": {
+        "@id": "https://plaindeutsch.netlify.app/#org"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "5.00",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "url": "https://plaindeutsch.gumroad.com/l/wpkva"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://plaindeutsch.netlify.app/mietvertrag-in-english.html#app",
+      "name": "Mietvertrag explainer",
+      "description": "Plain-English, clause-by-clause explanation of a German lease agreement (Mietvertrag), delivered by email.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web",
+      "inLanguage": "en",
+      "url": "https://plaindeutsch.netlify.app/mietvertrag-in-english.html",
+      "provider": {
+        "@id": "https://plaindeutsch.netlify.app/#org"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "8.00",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "url": "https://plaindeutsch.gumroad.com/l/bsfhcu"
+      }
+    }
+  ]
+}
+  </script>
   <meta name="google-site-verification" content="xUqhxE5vQB0a9FlnxW7LQiuBKKOUagBKMjfy9Dra480" />
   <style>
     html { overflow-y: scroll; }
@@ -389,6 +485,16 @@
     .footer-links a { color: rgba(255,255,255,.55); transition: color .15s; }
     .footer-links a:hover { color: #fff; }
 
+    /* ── FAQ ── */
+    .faq-list { max-width: 760px; display: flex; flex-direction: column; gap: 12px; margin: 8px 0 28px; }
+    .faq-item { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; }
+    .faq-item summary { cursor: pointer; list-style: none; padding: 16px 20px; font-weight: 600; font-size: 15px; color: #1B2A4A; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: #1D9E75; font-size: 22px; line-height: 1; flex-shrink: 0; }
+    .faq-item[open] summary::after { content: '\2013'; }
+    .faq-item p { padding: 0 20px 18px; margin: 0; font-size: 14px; color: #6B7280; line-height: 1.65; }
+    .faq-item a { color: #1D9E75; text-decoration: underline; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       .nav-links { gap: 14px; font-size: 13px; }
@@ -443,8 +549,8 @@
       <div class="stat-label">To understand your document</div>
     </div>
     <div class="stat">
-      <div class="stat-num">9</div>
-      <div class="stat-label">German document tools, coming soon</div>
+      <div class="stat-num">2</div>
+      <div class="stat-label">tools live now — 7 more coming soon</div>
     </div>
   </div>
 </div>
@@ -454,7 +560,7 @@
   <div class="section-inner">
     <div class="section-label">All tools</div>
     <h2 class="section-title">Everything German bureaucracy throws at you.</h2>
-    <p class="section-sub">One tool live now. Eight more in the pipeline — covering the documents that confuse expats most.</p>
+    <p class="section-sub">Two tools live now. Seven more in the pipeline — covering the documents that confuse expats most.</p>
 
     <div class="tools-grid">
 
@@ -663,6 +769,45 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Questions people ask first.</h2>
+    <p class="section-sub">Short, honest answers about what PlainDeutsch does and doesn't do.</p>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What does PlainDeutsch do?</summary>
+        <p>PlainDeutsch explains German documents in plain English. Paste the text or upload a PDF of your Mietvertrag (lease) or Nebenkostenabrechnung (annual utility statement) and an explanation of the document arrives by email, usually within minutes.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is this legal advice?</summary>
+        <p>No. PlainDeutsch explains what a document says in plain language. It does not provide Rechtsberatung, does not tell you what action to take, and is not a substitute for a Rechtsanwalt. For a dispute or a binding decision, speak to a licensed lawyer or a tenants' association such as your local Mieterverein.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How much does it cost?</summary>
+        <p>€5 per Nebenkostenabrechnung and €8 per Mietvertrag, paid once through Gumroad. There is no subscription and no PlainDeutsch account. No VAT is charged (Kleinunternehmerregelung, § 19 UStG).</p>
+      </details>
+      <details class="faq-item">
+        <summary>Which documents does it cover?</summary>
+        <p>Today: German lease agreements (Mietvertrag) and annual utility statements (Nebenkostenabrechnung), as pasted text or a PDF. Seven more tools, including an employment contract explainer and a tax FAQ, are planned.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can the explanation be wrong?</summary>
+        <p>Yes. The explanations are generated by AI using instructions written for these two document types and German tenancy and utility-billing rules, but they can still be wrong or miss context. Treat the result as a starting point and check anything important with your Mieterverein or a Rechtsanwalt.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How is my document handled?</summary>
+        <p>Your text or file is sent to Anthropic's Claude API to generate the explanation, and the result is emailed to you. Our <a href="privacy.html">privacy policy</a> lists every service involved and how long data is kept.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Why not just paste my document into a general chatbot?</summary>
+        <p>You can, and it may help. PlainDeutsch is for people who would rather not write their own prompt: each document type gets the same structure (summary, line-by-line breakdown, key numbers, what to check, next steps) and is written with German rules in mind. It is still AI output, so the same caution applies.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- DISCLAIMER -->
 <section style="padding: 48px 24px 64px;">
   <div class="disclaimer">
@@ -680,6 +825,7 @@
     </div>
     <div class="footer-links">
       <a href="#tools">Tools</a>
+      <a href="#faq">FAQ</a>
       <a href="blog.html">Articles</a>
       <a href="mailto:plaindeutsch@gmail.com">Contact</a>
       <a href="privacy.html">Privacy policy</a>
@@ -689,4 +835,5 @@
   </div>
 </footer>
 
-          
+</body>
+</html>
