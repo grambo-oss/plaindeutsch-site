@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://plaindeutsch.netlify.app/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-19</lastmod>
   </url>
   <url>
     <loc>https://plaindeutsch.netlify.app/mietvertrag-in-english.html</loc>
@@ -10,11 +10,15 @@
   </url>
   <url>
     <loc>https://plaindeutsch.netlify.app/nebenkostenabrechnung-in-english.html</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://plaindeutsch.netlify.app/nebenkostenabrechnung-deadline.html</loc>
+    <lastmod>2026-11-19</lastmod>
   </url>
   <url>
     <loc>https://plaindeutsch.netlify.app/blog.html</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-19</lastmod>
   </url>
   <url>
     <loc>https://plaindeutsch.netlify.app/example-mietvertrag.html</loc>
